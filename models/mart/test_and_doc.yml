@@ -1,0 +1,22 @@
+version: 2
+models:
+  - name: fact_orders
+    description: One record per order and order payment totals
+    columns:
+      - name: order_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: total_amount
+        description: Total amount per order
+        tests:
+          - not_null
+  - name: fact_customers
+    description: One record per customer and various custemer level measures like ltv
+    columns:
+      - name: customer_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
