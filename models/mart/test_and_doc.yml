@@ -1,13 +1,19 @@
 version: 2
 models:
   - name: fact_orders
-    description: One record per order and order payment totals
+    description: "{{ doc('fact_orders') }}"
     columns:
       - name: order_id
         description: Primary key
         tests:
           - unique
           - not_null
+      - name: customer_id
+        description: customer foreign key
+        tests:
+          - relationships:
+              to: ref('fact_customers')
+              field: customer_id
       - name: total_amount
         description: Total amount per order
         tests:
