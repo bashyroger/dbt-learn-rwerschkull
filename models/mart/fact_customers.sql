@@ -1,14 +1,8 @@
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 with ltv as (
     select 
         customer_id,
         sum(total_amount) as lifetime_value
-        from {{ref('orders')}}
+        from {{ref('fact_orders')}}
         group by 1
 ),
 customer_orders as (
